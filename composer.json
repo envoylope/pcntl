@@ -1,0 +1,34 @@
+{
+    "name": "envoylope/pcntl",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Envoylope\\Pcntl\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Envoylope\\Pcntl\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=8.1",
+        "ext-pcntl": "*",
+        "asmblah/php-amqp-compat": "dev-event-loop-heartbeats"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.6",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan-mockery": "^1.1",
+        "phpunit/phpunit": "^10.2",
+        "tasque/tasque": "^0.1",
+        "tasque/event-loop": "^0.1"
+    },
+    "config": {
+        "platform": {
+            "php": "8.1"
+        },
+        "sort-packages": true
+    }
+}
