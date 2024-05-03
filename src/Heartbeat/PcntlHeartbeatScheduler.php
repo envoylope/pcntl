@@ -64,6 +64,15 @@ class PcntlHeartbeatScheduler implements HeartbeatSchedulerInterface
         );
 
         pcntl_alarm($this->interval);
+
+        /*
+         * Ensure that for FastCGI requests, we do not leave any lingering SIGALRM timers set,
+         * as those will cause the process to exit unexpectedly with code 14
+         * during or before a subsequent request handled by this same FastCGI worker process.
+         */
+        register_shutdown_function(static function () {
+            pcntl_alarm(0);
+        });
     }
 
     /**

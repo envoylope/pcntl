@@ -10,6 +10,9 @@ With `php-amqplib`, we're able to send heartbeats more regularly, using UNIX Sys
 This library provides its own signal-based heartbeat sender, using `pcntl_async_signals(...)`
 to allow for more frequent heartbeat handling, based on the logic in [php-amqplib's sender implementation][php-amqplib's sender].
 
+Note that the `php-fpm` SAPI is _not_ supported by this scheduler, as it does not support the `ext-pcntl` PHP extension.
+If you are using `php-fpm`, see [Envoylope EventLoop][Envoylope EventLoop].
+
 ## Usage
 Install with Composer alongside [php-amqp-compat][php-amqp-compat]:
 
@@ -24,6 +27,7 @@ $ composer require envoylope/pcntl
 
 [AMQP heartbeats]: https://www.rabbitmq.com/heartbeats.html
 [Envoylope]: https://github.com/envoylope
+[Envoylope EventLoop]: https://github.com/envoylope/event-loop
 [ext-pcntl]: https://www.php.net/manual/en/book.pcntl.php
 [php-amqp-compat]: https://github.com/asmblah/php-amqp-compat
 [php-amqplib's sender]: https://github.com/php-amqplib/php-amqplib/blob/v3.5.4/PhpAmqpLib/Connection/Heartbeat/PCNTLHeartbeatSender.php

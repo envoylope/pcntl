@@ -15,9 +15,10 @@
     "require": {
         "php": ">=8.1",
         "ext-pcntl": "*",
-        "asmblah/php-amqp-compat": "dev-event-loop-heartbeats"
+        "asmblah/php-amqp-compat": "^0.4"
     },
     "require-dev": {
+        "hollodotme/fast-cgi-client": "^3.1",
         "mockery/mockery": "^1.6",
         "phpstan/phpstan": "^1.10",
         "phpstan/phpstan-mockery": "^1.1",
