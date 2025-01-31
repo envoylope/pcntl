@@ -34,4 +34,12 @@ class PcntlSchedulerFactory implements SchedulerFactoryInterface
     {
         return new PcntlHeartbeatScheduler($heartbeatTransmitter);
     }
+
+    /**
+     * Determines whether ext-pcntl -based heartbeat scheduling is supported.
+     */
+    public static function isSupported(): bool
+    {
+        return function_exists('pcntl_async_signals');
+    }
 }
