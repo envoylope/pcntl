@@ -167,11 +167,13 @@ class PhpCgiBehaviourTest extends AbstractTestCase
             )
         );
 
+        static::assertSame('', $response1->getError());
         static::assertSame(
             'Installed heartbeat sender with 2 second interval' . PHP_EOL .
             'Did not sleep' . PHP_EOL,
             $response1->getBody()
         );
+        static::assertSame('', $response2->getError());
         static::assertSame(
             'Did not install heartbeat sender' . PHP_EOL .
             'Did not sleep' . PHP_EOL,
@@ -212,11 +214,13 @@ class PhpCgiBehaviourTest extends AbstractTestCase
             $status['signaled'],
             'php-cgi process was terminated with signal ' . $status['termsig']
         );
+        static::assertSame('', $response1->getError());
         static::assertSame(
             'Installed heartbeat sender with 2 second interval' . PHP_EOL .
             'Did not sleep' . PHP_EOL,
             $response1->getBody()
         );
+        static::assertSame('', $response2->getError());
         static::assertSame(
             'Did not install heartbeat sender' . PHP_EOL .
             'Slept for 3 seconds' . PHP_EOL,
