@@ -14,11 +14,11 @@ declare(strict_types=1);
 namespace Envoylope\Pcntl\Tests\Functional\Heartbeat;
 
 use AMQPConnection;
+use AMQPException;
 use Asmblah\PhpAmqpCompat\AmqpManager;
 use Asmblah\PhpAmqpCompat\Configuration\Configuration;
 use Envoylope\Pcntl\PcntlSchedulerFactory;
 use Envoylope\Pcntl\Tests\Functional\AbstractFunctionalTestCase;
-use PhpAmqpLib\Exception\AMQPHeartbeatMissedException;
 
 /**
  * Class ClientHeartbeatTest.
@@ -54,7 +54,8 @@ class ClientHeartbeatTest extends AbstractFunctionalTestCase
         $amqpConnection = new AMQPConnection(['heartbeat' => 1]);
         $amqpConnection->connect();
 
-        $this->expectException(AMQPHeartbeatMissedException::class);
+        $this->expectException(AMQPException::class);
+        $this->expectExceptionMessage('Heartbeat missed: Missed server heartbeat');
 
         // Use time_sleep_until(...) so that the SIGALRM signals don't prevent the full sleep.
         time_sleep_until(microtime(true) + 5);

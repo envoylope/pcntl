@@ -15,7 +15,7 @@
     "require": {
         "php": ">=8.1",
         "ext-pcntl": "*",
-        "asmblah/php-amqp-compat": "^0.4"
+        "asmblah/php-amqp-compat": "^0.5"
     },
     "require-dev": {
         "hollodotme/fast-cgi-client": "^3.1",

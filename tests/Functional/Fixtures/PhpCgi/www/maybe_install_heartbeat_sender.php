@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Asmblah\PhpAmqpCompat\Bridge\Connection\AmqpConnectionBridgeInterface;
 use Asmblah\PhpAmqpCompat\Driver\Amqplib\Heartbeat\HeartbeatTransmitter;
 use Asmblah\PhpAmqpCompat\Heartbeat\HeartbeatSender;
-use Asmblah\PhpAmqpCompat\Misc\Clock;
 use Envoylope\Pcntl\Heartbeat\PcntlHeartbeatScheduler;
 
 require_once dirname(__DIR__, 5) . '/vendor/autoload.php';
@@ -16,7 +15,7 @@ $sleepDuration = isset($_POST['sleep_duration']) ? (int)$_POST['sleep_duration']
 if ($heartbeatInterval !== null) {
     $heartbeatSender = new HeartbeatSender(
         new PcntlHeartbeatScheduler(
-            new HeartbeatTransmitter(new Clock())
+            new HeartbeatTransmitter()
         )
     );
 
